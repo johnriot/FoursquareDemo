@@ -1,4 +1,4 @@
-package converter;
+package com.neoware.foursquaresearchdemo.converter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,11 +6,13 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.CharBuffer;
 
-class ResourceReader extends Reader {
+public class ResourceReader extends Reader {
 
+    private final String mFileName;
     private final InputStreamReader mDelegateReader;
 
     public ResourceReader(String fileName) {
+        mFileName = fileName;
         InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
         mDelegateReader = new InputStreamReader(inputStream);
     }
@@ -54,5 +56,23 @@ class ResourceReader extends Reader {
     public void close() throws IOException {
         mDelegateReader.close();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ResourceReader that = (ResourceReader) o;
+
+        if (!mFileName.equals(that.mFileName)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return mFileName.hashCode();
+    }
 }
+
 

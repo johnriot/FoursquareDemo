@@ -6,6 +6,8 @@ import com.neoware.foursquaresearchdemo.request.SearchVenuesRequest;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 import com.neoware.foursquaresearchdemo.view.Presentation;
 
+import java.io.IOException;
+
 public class SearchVenuesScenario implements Runnable {
 
     private final Presentation<SearchVenuesResponse> mPresentation;
@@ -21,7 +23,12 @@ public class SearchVenuesScenario implements Runnable {
     @Override
     public void run() {
         String locationName = mRequest.getLocationName();
-        Venues venues = mFoursquareApi.searchVenues(locationName);
+        Venues venues = null;
+        try {
+            venues = mFoursquareApi.searchVenues(locationName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SearchVenuesResponse response = new SearchVenuesResponse(venues);
         mPresentation.present(response);
     }

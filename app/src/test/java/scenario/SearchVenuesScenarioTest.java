@@ -18,9 +18,10 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.PLACE_NAME;
+
 public class SearchVenuesScenarioTest {
-    static final String PLACE_NAME = "Anglesey";
-    static final Venues LONDON_VENUES = new Venues(Collections.EMPTY_LIST);
+    static final Venues ANGLESEY_VENUES = new Venues(Collections.EMPTY_LIST);
 
     @Mock
     Presentation<SearchVenuesResponse> presentation;
@@ -39,9 +40,9 @@ public class SearchVenuesScenarioTest {
         // @Then The ui should display the foursquare venues retrieved for that request
 
         SearchVenuesScenario scenario = new SearchVenuesScenario(presentation, mFoursquareApi, new SearchVenuesRequest(PLACE_NAME));
-        SearchVenuesResponse response = new SearchVenuesResponse(LONDON_VENUES);
+        SearchVenuesResponse response = new SearchVenuesResponse(ANGLESEY_VENUES);
 
-        when(mFoursquareApi.searchVenues(PLACE_NAME)).thenReturn(LONDON_VENUES);
+        when(mFoursquareApi.searchVenues(PLACE_NAME)).thenReturn(ANGLESEY_VENUES);
         scenario.run();
         verify(presentation).present(eq(response));
     }
