@@ -1,0 +1,49 @@
+{
+  "id": "4bcf19c20ffdce727f3cb2c0",
+  "name": "Tre-Ysgawen Hall Country House Hotel & Spa Llangefni",
+  "contact": { },
+  "location": {
+    "address": "Capel Coch",
+    "lat": 53.30383652492495,
+    "lng": -4.326803884382796,
+    "cc": "GB",
+    "city": "Llangefni",
+    "state": "Anglesey",
+    "country": "United Kingdom",
+    "formattedAddress": [
+      "Capel Coch",
+      "Llangefni",
+      "Anglesey"
+    ]
+  },
+  "categories": [
+    {
+      "id": "4bf58dd8d48988d1d5941735",
+      "name": "Hotel Bar",
+      "pluralName": "Hotel Bars",
+      "shortName": "Hotel Bar",
+      "icon": {
+        "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/hotel_bar_",
+        "suffix": ".png"
+      },
+      "primary": true
+    }
+  ],
+  "verified": false,
+  "stats": {
+    "checkinsCount": 45,
+    "usersCount": 29,
+    "tipCount": 2
+  },
+  "allowMenuUrlEdit": true,
+  "specials": {
+    "count": 0,
+    "items": [ ]
+  },
+  "hereNow": {
+    "count": 0,
+    "summary": "Nobody here",
+    "groups": [ ]
+  },
+  "referralId": "v-1440505084"
+}

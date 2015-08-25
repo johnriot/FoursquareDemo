@@ -1,3 +1,5 @@
+package scenario;
+
 import com.neoware.foursquaresearchdemo.boundary.FoursquareApi;
 import com.neoware.foursquaresearchdemo.model.Venues;
 import com.neoware.foursquaresearchdemo.request.SearchVenuesRequest;
@@ -10,13 +12,15 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Collections;
+
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class SearchVenuesScenarioTest {
-    static final String PLACE_NAME = "london";
-    static final Venues LONDON_VENUES = new Venues();
+    static final String PLACE_NAME = "Anglesey";
+    static final Venues LONDON_VENUES = new Venues(Collections.EMPTY_LIST);
 
     @Mock
     Presentation<SearchVenuesResponse> presentation;
