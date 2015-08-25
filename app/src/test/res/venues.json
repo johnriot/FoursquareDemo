@@ -1,0 +1,153 @@
+{
+  "venues": [
+    {
+      "id": "4bcf19c20ffdce727f3cb2c0",
+      "name": "Tre-Ysgawen Hall Country House Hotel & Spa Llangefni",
+      "contact": {
+      },
+      "location": {
+        "address": "Capel Coch",
+        "lat": 53.30383652492495,
+        "lng": -4.326803884382796,
+        "cc": "GB",
+        "city": "Llangefni",
+        "state": "Anglesey",
+        "country": "United Kingdom",
+        "formattedAddress": [
+          "Capel Coch",
+          "Llangefni",
+          "Anglesey"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d1d5941735",
+          "name": "Hotel Bar",
+          "pluralName": "Hotel Bars",
+          "shortName": "Hotel Bar",
+          "icon": {
+            "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/travel\/hotel_bar_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "verified": false,
+      "stats": {
+        "checkinsCount": 45,
+        "usersCount": 29,
+        "tipCount": 2
+      },
+      "allowMenuUrlEdit": true,
+      "specials": {
+        "count": 0,
+        "items": [
+        ]
+      },
+      "hereNow": {
+        "count": 0,
+        "summary": "Nobody here",
+        "groups": [
+        ]
+      },
+      "referralId": "v-1440515196"
+    },
+    {
+      "id": "4c77be0eb4b4b60c657c280e",
+      "name": "Oriel Ynys Mon",
+      "contact": {
+      },
+      "location": {
+        "lat": 53.26321592693343,
+        "lng": -4.311748254678153,
+        "cc": "GB",
+        "country": "United Kingdom"
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d143941735",
+          "name": "Breakfast Spot",
+          "pluralName": "Breakfast Spots",
+          "shortName": "Breakfast",
+          "icon": {
+            "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/breakfast_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "verified": false,
+      "stats": {
+        "checkinsCount": 29,
+        "usersCount": 22,
+        "tipCount": 0
+      },
+      "allowMenuUrlEdit": true,
+      "specials": {
+        "count": 0,
+        "items": [
+        ]
+      },
+      "hereNow": {
+        "count": 0,
+        "summary": "Nobody here",
+        "groups": [
+        ]
+      },
+      "referralId": "v-1440515196"
+    },
+    {
+      "id": "4c83dc7dd8086dcb27c18352",
+      "name": "Theatr Fach",
+      "contact": {
+      },
+      "location": {
+        "address": "Pencraig",
+        "lat": 53.25621485710144,
+        "lng": -4.297665953636169,
+        "postalCode": "LL7 7 7",
+        "cc": "GB",
+        "city": "Llangefni",
+        "state": "Anglesey",
+        "country": "United Kingdom",
+        "formattedAddress": [
+          "Pencraig",
+          "Llangefni",
+          "Anglesey",
+          "LL7 7 7"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d137941735",
+          "name": "Theater",
+          "pluralName": "Theaters",
+          "shortName": "Theater",
+          "icon": {
+            "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/arts_entertainment\/performingarts_theater_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "verified": false,
+      "stats": {
+        "checkinsCount": 6,
+        "usersCount": 1,
+        "tipCount": 0
+      },
+      "specials": {
+        "count": 0,
+        "items": [
+        ]
+      },
+      "hereNow": {
+        "count": 0,
+        "summary": "Nobody here",
+        "groups": [
+        ]
+      },
+      "referralId": "v-1440515196"
+    }
+  ]
+}

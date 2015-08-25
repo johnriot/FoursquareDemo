@@ -17,10 +17,10 @@ public class VenuesConverter extends JsonDeserializer<Venues> {
     }
 
     static class VenuesBuilder {
-        public List<Venue> mVenues;
+        public List<Venue> venues;
 
         Venues build() {
-            return new Venues(mVenues);
+            return new Venues(venues);
         }
     }
 }
