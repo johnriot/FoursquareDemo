@@ -1,6 +1,7 @@
 package scenario;
 
 import com.neoware.foursquaresearchdemo.boundary.FoursquareApi;
+import com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues;
 import com.neoware.foursquaresearchdemo.model.Venues;
 import com.neoware.foursquaresearchdemo.request.SearchVenuesRequest;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
@@ -40,9 +41,9 @@ public class SearchVenuesScenarioTest {
         // @Then The ui should display the foursquare venues retrieved for that request
 
         SearchVenuesScenario scenario = new SearchVenuesScenario(presentation, mFoursquareApi, new SearchVenuesRequest(PLACE_NAME));
-        SearchVenuesResponse response = new SearchVenuesResponse(ANGLESEY_VENUES);
+        SearchVenuesResponse response = new SearchVenuesResponse(MockSearchVenues.HTTP_SUCCESS_CODE, ANGLESEY_VENUES);
 
-        when(mFoursquareApi.searchVenues(PLACE_NAME)).thenReturn(ANGLESEY_VENUES);
+        when(mFoursquareApi.searchVenues(PLACE_NAME)).thenReturn(response);
         scenario.run();
         verify(presentation).present(eq(response));
     }

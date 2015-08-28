@@ -5,9 +5,19 @@ import com.neoware.foursquaresearchdemo.model.Venues;
 public class SearchVenuesResponse {
 
     private Venues mVenues;
+    private int mHttpResultCode;
 
-    public SearchVenuesResponse(Venues venues) {
+    public SearchVenuesResponse(int httpResultCode, Venues venues) {
+        mHttpResultCode = httpResultCode;
         mVenues = venues;
+    }
+
+    public int getHttpResultCode() {
+        return mHttpResultCode;
+    }
+
+    public Venues getVenues() {
+        return mVenues;
     }
 
     @Override

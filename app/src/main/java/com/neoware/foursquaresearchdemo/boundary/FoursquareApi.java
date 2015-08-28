@@ -1,9 +1,9 @@
 package com.neoware.foursquaresearchdemo.boundary;
 
-import com.neoware.foursquaresearchdemo.model.Venues;
+import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 
 import java.io.IOException;
 
 public interface FoursquareApi {
-    Venues searchVenues(String locationName) throws IOException;
+    SearchVenuesResponse searchVenues(String locationName) throws IOException;
 }

@@ -4,6 +4,7 @@ import com.neoware.foursquaresearchdemo.boundary.FoursquareApi;
 import com.neoware.foursquaresearchdemo.converter.JsonConverter;
 import com.neoware.foursquaresearchdemo.converter.ResourceReader;
 import com.neoware.foursquaresearchdemo.model.Venues;
+import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 
 import java.io.IOException;
 
@@ -20,10 +21,10 @@ public class MockFoursquareApi implements FoursquareApi {
     }
 
     @Override
-    public Venues searchVenues(String locationName) throws IOException {
+    public SearchVenuesResponse searchVenues(String locationName) throws IOException {
         if (PLACE_NAME.equalsIgnoreCase(locationName)) {
-            return FOURSQUARE_VENUES;
+            return new SearchVenuesResponse(MockSearchVenues.HTTP_SUCCESS_CODE, FOURSQUARE_VENUES);
         }
-        return mJsonConverter.readValue(new ResourceReader(SEARCH_VENUES_FILE_NAME), Venues.class);
+        return new SearchVenuesResponse(MockSearchVenues.HTTP_SUCCESS_CODE, mJsonConverter.readValue(new ResourceReader(SEARCH_VENUES_FILE_NAME), Venues.class));
     }
 }

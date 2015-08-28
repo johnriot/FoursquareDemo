@@ -1,7 +1,6 @@
 package com.neoware.foursquaresearchdemo.scenario;
 
 import com.neoware.foursquaresearchdemo.boundary.FoursquareApi;
-import com.neoware.foursquaresearchdemo.model.Venues;
 import com.neoware.foursquaresearchdemo.request.SearchVenuesRequest;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 import com.neoware.foursquaresearchdemo.view.Presentation;
@@ -23,13 +22,12 @@ public class SearchVenuesScenario implements Runnable {
     @Override
     public void run() {
         String locationName = mRequest.getLocationName();
-        Venues venues = null;
+        SearchVenuesResponse response = null;
         try {
-            venues = mFoursquareApi.searchVenues(locationName);
+            response = mFoursquareApi.searchVenues(locationName);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SearchVenuesResponse response = new SearchVenuesResponse(venues);
         mPresentation.present(response);
     }
 }

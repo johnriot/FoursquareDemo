@@ -16,4 +16,6 @@ public interface MockSearchVenues {
     String PLACE_NAME = "Anglesey";
 
     String SEARCH_VENUES_FILE_NAME = "search_venues.json";
+
+    int HTTP_SUCCESS_CODE = 200;
 }

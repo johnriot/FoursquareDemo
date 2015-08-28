@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.neoware.foursquaresearchdemo.model.Venue;
 import com.neoware.foursquaresearchdemo.model.Venues;
+import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -23,6 +24,7 @@ public class JsonConverter {
     private void configureModule(SimpleModule module) {
         module.addDeserializer(Venues.class, new VenuesConverter());
         module.addDeserializer(Venue.class, new VenueConverter());
+        module.addDeserializer(SearchVenuesResponse.class, new ResponseConverter());
     }
 
     public <T> T readValue(Reader reader, Class<T> valueType) throws IOException {

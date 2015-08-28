@@ -28,7 +28,7 @@ public class MockFoursquareApiTest {
 
     @Test
     public void searchInMemoryVenuesForAngleseyKeyword() throws Exception {
-        Venues venuesForAngleseyKeyword = mMockFoursquareApi.searchVenues(MockSearchVenues.PLACE_NAME);
+        Venues venuesForAngleseyKeyword = mMockFoursquareApi.searchVenues(MockSearchVenues.PLACE_NAME).getVenues();
         assertThat(venuesForAngleseyKeyword).isEqualTo(MockSearchVenues.FOURSQUARE_VENUES);
     }
 
@@ -38,7 +38,7 @@ public class MockFoursquareApiTest {
         Venues mockedJson = new Venues(Arrays.asList(MockSearchVenues.TRE_YSGAWEN_HALL));
         when(mJsonConverter.readValue(eq(mockedResourceReader), eq(Venues.class))).thenReturn(mockedJson);
 
-        Venues venuesForAnyKeyword = mMockFoursquareApi.searchVenues("any keyword");
+        Venues venuesForAnyKeyword = mMockFoursquareApi.searchVenues("any keyword").getVenues();
 
         assertThat(venuesForAnyKeyword).isEqualTo(mockedJson);
     }
