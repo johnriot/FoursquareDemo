@@ -30,6 +30,12 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.1'
 
+    // Design Support Library
+    compile "com.android.support:design:22.2.1"
+
+    // CardView
+    compile "com.android.support:cardview-v7:21.0.2"
+
     // Json Conversion
     compile 'com.fasterxml.jackson.core:jackson-core:2.6.1'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.1'

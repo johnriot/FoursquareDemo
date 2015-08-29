@@ -8,6 +8,10 @@ public class Venue {
         this.mVenueName = venueName;
     }
 
+    public String getName() {
+        return mVenueName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
