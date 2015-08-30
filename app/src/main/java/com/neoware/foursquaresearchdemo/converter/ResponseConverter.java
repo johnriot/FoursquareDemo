@@ -8,6 +8,7 @@ import com.neoware.foursquaresearchdemo.model.Venues;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseConverter extends JsonDeserializer<SearchVenuesResponse> {
@@ -21,7 +22,20 @@ public class ResponseConverter extends JsonDeserializer<SearchVenuesResponse> {
         public Meta meta;
         public Response response;
         SearchVenuesResponse build() {
-            return new SearchVenuesResponse(meta.code, new Venues(response.venues));
+            // Check for invalid arguments
+            if(response == null || response.groups == null || response.groups.size() < 1
+                    || response.groups.get(0) == null || response.groups.get(0).items == null) {
+                return null;
+            }
+
+            // Build the response
+            List<Venue> venues = new ArrayList<>();
+            for (Item item : response.groups.get(0).items) {
+                if (item.venue != null) {
+                    venues.add(item.venue);
+                }
+            }
+            return new SearchVenuesResponse(meta.code, new Venues(venues));
         }
     }
 
@@ -30,6 +44,14 @@ public class ResponseConverter extends JsonDeserializer<SearchVenuesResponse> {
     }
 
     static class Response {
-        public List<Venue> venues;
+        public List<Group> groups;
+    }
+
+    static class Group {
+        public List<Item> items;
+    }
+
+    static class Item {
+        public Venue venue;
     }
 }

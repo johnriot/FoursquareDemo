@@ -8,7 +8,10 @@ import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 
 import org.junit.Test;
 
+import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.BOROUGH_MARKET;
 import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.HTTP_SUCCESS_CODE;
+import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.HYDE_PARK;
+import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.PRIMROSE_HILL;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class ResponseConverterTest {
@@ -18,5 +21,6 @@ public class ResponseConverterTest {
         public void parseDataCorrectly() throws Exception {
             SearchVenuesResponse response = mConverter.readValue(new ResourceReader("search_venues.json"), SearchVenuesResponse.class);
             assertThat(response.getHttpResultCode()).isEqualTo(HTTP_SUCCESS_CODE);
+            assertThat(response.getVenues()).containsExactly(BOROUGH_MARKET, PRIMROSE_HILL, HYDE_PARK);
         }
 }

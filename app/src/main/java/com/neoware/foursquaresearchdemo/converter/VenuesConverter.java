@@ -7,6 +7,7 @@ import com.neoware.foursquaresearchdemo.model.Venue;
 import com.neoware.foursquaresearchdemo.model.Venues;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VenuesConverter extends JsonDeserializer<Venues> {
@@ -17,10 +18,20 @@ public class VenuesConverter extends JsonDeserializer<Venues> {
     }
 
     static class VenuesBuilder {
-        public List<Venue> venues;
+        public List<Item> items;
 
         Venues build() {
+            List<Venue> venues = new ArrayList<>();
+            for (Item item : items) {
+                if (item.venue != null) {
+                    venues.add(item.venue);
+                }
+            }
             return new Venues(venues);
         }
+    }
+
+    static class Item {
+        public Venue venue;
     }
 }

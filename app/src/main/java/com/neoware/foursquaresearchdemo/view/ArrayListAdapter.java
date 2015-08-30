@@ -10,7 +10,7 @@ import java.util.List;
 
 public abstract class ArrayListAdapter<T> extends BaseAdapter {
 
-    private final List<T> items = new ArrayList<T>();
+    private final List<T> items = new ArrayList<>();
 
     @Override
     public int getCount() {

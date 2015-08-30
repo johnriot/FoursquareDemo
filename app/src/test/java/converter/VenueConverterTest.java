@@ -9,7 +9,7 @@ import com.neoware.foursquaresearchdemo.model.Venue;
 import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.TRE_YSGAWEN_HALL;
+import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.BOROUGH_MARKET;
 
 public class VenueConverterTest {
 
@@ -19,6 +19,6 @@ public class VenueConverterTest {
     public void parseDataCorrectly() throws Exception {
         Venue actual = mConverter.readValue(new ResourceReader("venue.json"), Venue.class);
 
-        assertThat(actual).isEqualTo(TRE_YSGAWEN_HALL);
+        assertThat(actual).isEqualTo(BOROUGH_MARKET);
     }
 }

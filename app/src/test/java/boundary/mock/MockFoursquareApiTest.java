@@ -35,7 +35,7 @@ public class MockFoursquareApiTest {
     @Test
     public void mockSearchVenuesForAnyOtherKeyword() throws Exception {
         ResourceReader mockedResourceReader = new ResourceReader(MockSearchVenues.SEARCH_VENUES_FILE_NAME);
-        Venues mockedJson = new Venues(Arrays.asList(MockSearchVenues.TRE_YSGAWEN_HALL));
+        Venues mockedJson = new Venues(Arrays.asList(MockSearchVenues.BOROUGH_MARKET));
         when(mJsonConverter.readValue(eq(mockedResourceReader), eq(Venues.class))).thenReturn(mockedJson);
 
         Venues venuesForAnyKeyword = mMockFoursquareApi.searchVenues("any keyword").getVenues();
