@@ -55,7 +55,7 @@ class VenueHolder extends RecyclerView.ViewHolder {
     private final TextView mPlaceName;
     private final ImageView mImageView;
     private final Picasso mPicasso;
-    private final int mTextOverLoadedImageColor;
+    private final int mTransparentBackground;
     private final int mDefaultBackgroundColor;
 
     public VenueHolder(View itemView, Context context) {
@@ -64,7 +64,7 @@ class VenueHolder extends RecyclerView.ViewHolder {
         mImageView = (ImageView) itemView.findViewById(R.id.venue_iv);
         mPicasso = Picasso.with(context);
         mDefaultBackgroundColor = context.getResources().getColor(R.color.default_text_background);
-        mTextOverLoadedImageColor = context.getResources().getColor(R.color.semi_grey_background);
+        mTransparentBackground = context.getResources().getColor(R.color.transparent_background);
     }
 
     public void bindVenue(Venue venue) {
@@ -75,7 +75,7 @@ class VenueHolder extends RecyclerView.ViewHolder {
                 .into(mImageView, new Callback() {
                     @Override
                     public void onSuccess() {
-                        mPlaceName.setBackgroundColor(mTextOverLoadedImageColor);
+                        mPlaceName.setBackgroundColor(mTransparentBackground);
                     }
 
                     @Override
