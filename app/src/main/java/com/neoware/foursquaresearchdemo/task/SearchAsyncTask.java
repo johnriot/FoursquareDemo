@@ -3,32 +3,28 @@ package com.neoware.foursquaresearchdemo.task;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.neoware.foursquaresearchdemo.boundary.retrofit.FoursquareApiBuilder;
+import com.neoware.foursquaresearchdemo.boundary.retrofit.RetrofitCheckedException;
 import com.neoware.foursquaresearchdemo.boundary.retrofit.RetrofitFoursquareApi;
-import com.neoware.foursquaresearchdemo.converter.JsonConverter;
-import com.neoware.foursquaresearchdemo.converter.RetrofitConverter;
 import com.neoware.foursquaresearchdemo.request.SearchVenuesRequest;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
 import com.neoware.foursquaresearchdemo.view.Presentation;
 
 import java.lang.ref.WeakReference;
 
-import retrofit.RestAdapter;
+import retrofit.ErrorHandler;
+import retrofit.RetrofitError;
 
 public class SearchAsyncTask extends AsyncTask<SearchVenuesRequest, Void, SearchVenuesResponse> {
     private static final String TAG = SearchAsyncTask.class.getSimpleName();
     private WeakReference<Presentation<SearchVenuesResponse>> mPresentationRef;
     private RetrofitFoursquareApi mApiService;
+    private ErrorHandler mErrorHandler;
 
     public SearchAsyncTask(Presentation<SearchVenuesResponse> presentation) {
         mPresentationRef = new WeakReference<>(presentation);
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(RetrofitFoursquareApi.ENDPOINT_URL)
-                .setConverter(new RetrofitConverter(new JsonConverter(new ObjectMapper(), new SimpleModule())))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-        mApiService = restAdapter.create(RetrofitFoursquareApi.class);
+        mErrorHandler = new RetrofitErrorHandler();
+        mApiService = FoursquareApiBuilder.buildApiService(mErrorHandler);
     }
 
     @Override
@@ -39,7 +35,13 @@ public class SearchAsyncTask extends AsyncTask<SearchVenuesRequest, Void, Search
         }
 
         String location = requests[0].getLocationName();
-        return mApiService.searchVenues(location);
+        SearchVenuesResponse searchVenuesResponse = null;
+        try {
+            searchVenuesResponse = mApiService.searchVenues(location);
+        } catch (RetrofitCheckedException e) {
+            searchVenuesResponse = new SearchVenuesResponse(false, null);
+        }
+        return searchVenuesResponse;
     }
 
     @Override
@@ -52,4 +54,13 @@ public class SearchAsyncTask extends AsyncTask<SearchVenuesRequest, Void, Search
             Log.e(TAG, "Activity dead before search returned.");
         }
     }
+
+    class RetrofitErrorHandler implements ErrorHandler {
+        @Override
+        public Throwable handleError(RetrofitError cause) {
+            return new RetrofitCheckedException(cause);
+        }
+    }
 }
+
+

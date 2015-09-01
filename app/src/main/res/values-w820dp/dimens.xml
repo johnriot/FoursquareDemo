@@ -6,4 +6,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">20dp</dimen>
     <dimen name="card_height">500dp</dimen>
+
+    <dimen name="place_name_text_size">30sp</dimen>
+    <dimen name="search_box_width">300dp</dimen>
 </resources>

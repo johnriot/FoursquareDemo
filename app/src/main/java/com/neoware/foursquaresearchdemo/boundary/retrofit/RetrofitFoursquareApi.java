@@ -10,7 +10,7 @@ public interface RetrofitFoursquareApi {
     String ENDPOINT_URL = "https://api.foursquare.com";
     String AUTH_TOKEN_QUERY = "oauth_token";
     String VERSION_QUERY = "v";
-    String PHOTO_COUNT_QUERY = "photoCount";
+    String PHOTO_COUNT_QUERY = "venuePhotos";
 
     // These two values are taken from Fourquare's "Try Me" web demo.
     // For a real application we need to do token exchange and persist the OAuth token (securely).
@@ -24,9 +24,8 @@ public interface RetrofitFoursquareApi {
 
     /**
      * Creates a query like the following:
-     * https://api.foursquare.com/v2/venues/explore?near=london&photoCount=1&oauth_token=MCQM2XHOEFU24SBT5KR50MHCA3TSZT1JUDGSPJW2GAU4AYWM&v=20150830
+     * https://api.foursquare.com/v2/venues/explore?oauth_token=MCQM2XHOEFU24SBT5KR50MHCA3TSZT1JUDGSPJW2GAU4AYWM&v=20150830&photoCount=1&near=london
      */
     @GET("/v2/venues/explore?" + PREDEFINED_QUERY)
-    SearchVenuesResponse searchVenues(
-            @Query("near") String locationName);
+    SearchVenuesResponse searchVenues (@Query("near") String locationName) throws RetrofitCheckedException;
 }

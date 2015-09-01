@@ -5,15 +5,15 @@ import com.neoware.foursquaresearchdemo.model.Venues;
 public class SearchVenuesResponse {
 
     private Venues mVenues;
-    private int mHttpResultCode;
+    private boolean mHttpSuccess;
 
-    public SearchVenuesResponse(int httpResultCode, Venues venues) {
-        mHttpResultCode = httpResultCode;
+    public SearchVenuesResponse(boolean success, Venues venues) {
+        mHttpSuccess = success;
         mVenues = venues;
     }
 
-    public int getHttpResultCode() {
-        return mHttpResultCode;
+    public boolean wasRequestSuccessful() {
+        return mHttpSuccess;
     }
 
     public Venues getVenues() {

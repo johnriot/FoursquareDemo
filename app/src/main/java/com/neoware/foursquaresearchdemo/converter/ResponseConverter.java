@@ -3,6 +3,7 @@ package com.neoware.foursquaresearchdemo.converter;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues;
 import com.neoware.foursquaresearchdemo.model.Venue;
 import com.neoware.foursquaresearchdemo.model.Venues;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
@@ -22,6 +23,11 @@ public class ResponseConverter extends JsonDeserializer<SearchVenuesResponse> {
         public Meta meta;
         public Response response;
         SearchVenuesResponse build() {
+            // Check for successful HTTP result
+            if (meta.code != MockSearchVenues.HTTP_SUCCESS_CODE) {
+                return null;
+            }
+
             // Check for invalid arguments
             if(response == null || response.groups == null || response.groups.size() < 1
                     || response.groups.get(0) == null || response.groups.get(0).items == null) {
@@ -35,7 +41,7 @@ public class ResponseConverter extends JsonDeserializer<SearchVenuesResponse> {
                     venues.add(item.venue);
                 }
             }
-            return new SearchVenuesResponse(meta.code, new Venues(venues));
+            return new SearchVenuesResponse(meta.code == 200, new Venues(venues));
         }
     }
 

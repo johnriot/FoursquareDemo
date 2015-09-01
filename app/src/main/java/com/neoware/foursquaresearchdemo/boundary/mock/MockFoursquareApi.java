@@ -23,8 +23,8 @@ public class MockFoursquareApi implements FoursquareApi {
     @Override
     public SearchVenuesResponse searchVenues(String locationName) throws IOException {
         if (PLACE_NAME.equalsIgnoreCase(locationName)) {
-            return new SearchVenuesResponse(MockSearchVenues.HTTP_SUCCESS_CODE, FOURSQUARE_VENUES);
+            return new SearchVenuesResponse(true, FOURSQUARE_VENUES);
         }
-        return new SearchVenuesResponse(MockSearchVenues.HTTP_SUCCESS_CODE, mJsonConverter.readValue(new ResourceReader(SEARCH_VENUES_FILE_NAME), Venues.class));
+        return new SearchVenuesResponse(true, mJsonConverter.readValue(new ResourceReader(SEARCH_VENUES_FILE_NAME), Venues.class));
     }
 }

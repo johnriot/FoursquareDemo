@@ -28,7 +28,7 @@ public class SearchAsyncTaskTest extends InstrumentationTestCase {
             @Override
             public void present(SearchVenuesResponse response) {
                 assertNotNull(response);
-                assertTrue(response.getHttpResultCode() == MockSearchVenues.HTTP_SUCCESS_CODE);
+                assertTrue(response.wasRequestSuccessful());
                 assertTrue(response.getVenues().size() > 0);
                 signal.countDown();
             }

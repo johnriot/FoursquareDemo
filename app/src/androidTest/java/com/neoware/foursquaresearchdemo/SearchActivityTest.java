@@ -6,6 +6,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.EditText;
 
+import com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues;
 import com.neoware.foursquaresearchdemo.controller.SearchActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -32,20 +33,19 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
     public void testSearchFinishedViewsCreatedAndVisible() throws Throwable {
         final SearchActivity activity = getActivity();
         TextInputLayout textInputLayout = (TextInputLayout) activity.findViewById(R.id.text_input);
+        final EditText searchText = (EditText) activity.findViewById(R.id.search_et);
         FloatingActionButton bottomFab = (FloatingActionButton) activity.findViewById(R.id.fab_btn_bottom);
         final FloatingActionButton middleFab = (FloatingActionButton) activity.findViewById(R.id.fab_btn_middle);
 
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
-                activity.onMiddleFabClick(middleFab);
-                // Pressing the Middle FAB for the second time simulates what will happen in the future when
-                // results are loaded. This behaviour will soon change.
+                searchText.setText(MockSearchVenues.PLACE_NAME);
                 activity.onMiddleFabClick(middleFab);
             }
         });
 
-        final int testTimeOutSeconds = 2;
+        final int testTimeOutSeconds = 5;
         try {
             TimeUnit.SECONDS.sleep(testTimeOutSeconds);
         } catch (InterruptedException e) {

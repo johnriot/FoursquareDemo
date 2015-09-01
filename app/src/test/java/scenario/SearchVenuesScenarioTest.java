@@ -1,7 +1,6 @@
 package scenario;
 
 import com.neoware.foursquaresearchdemo.boundary.FoursquareApi;
-import com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues;
 import com.neoware.foursquaresearchdemo.model.Venues;
 import com.neoware.foursquaresearchdemo.request.SearchVenuesRequest;
 import com.neoware.foursquaresearchdemo.response.SearchVenuesResponse;
@@ -15,11 +14,10 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Collections;
 
+import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.PLACE_NAME;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import static com.neoware.foursquaresearchdemo.boundary.mock.MockSearchVenues.PLACE_NAME;
 
 public class SearchVenuesScenarioTest {
     static final Venues ANGLESEY_VENUES = new Venues(Collections.EMPTY_LIST);
@@ -41,7 +39,7 @@ public class SearchVenuesScenarioTest {
         // @Then The ui should display the foursquare venues retrieved for that request
 
         SearchVenuesScenario scenario = new SearchVenuesScenario(presentation, mFoursquareApi, new SearchVenuesRequest(PLACE_NAME));
-        SearchVenuesResponse response = new SearchVenuesResponse(MockSearchVenues.HTTP_SUCCESS_CODE, ANGLESEY_VENUES);
+        SearchVenuesResponse response = new SearchVenuesResponse(true, ANGLESEY_VENUES);
 
         when(mFoursquareApi.searchVenues(PLACE_NAME)).thenReturn(response);
         scenario.run();
